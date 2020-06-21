@@ -14,9 +14,9 @@ func (index strictImmutableIndex) Get(value string) (int, error) {
 		return -1, fmt.Errorf("Value cannot be empty")
 	}
 	if index.ltr {
-		return ltrStrictIndex(value, index.indexOf, index.occur, index.exclusive)
+		return ltrIndex(value, index.indexOf, index.occur, index.exclusive)
 	} else {
-		return rtlStrictIndex(value, index.indexOf, index.occur, index.exclusive)
+		return rtlIndex(value, index.indexOf, index.occur, index.exclusive)
 	}
 }
 func Strict(indexOf string, occur uint, exclusive bool, ltr bool) (Index, error) {

@@ -35,7 +35,7 @@ func findAllIndexes(value, sub string) []int {
 	}
 	return indexes
 }
-func ltrStrictIndex(name, sub string, occur uint, exclusive bool) (int, error) {
+func ltrIndex(name, sub string, occur uint, exclusive bool) (int, error) {
 	matches := findAllIndexes(name, sub)
 	if int(occur) <= len(matches) {
 		i := matches[occur-1]
@@ -47,7 +47,7 @@ func ltrStrictIndex(name, sub string, occur uint, exclusive bool) (int, error) {
 	}
 	return -1, fmt.Errorf("No match found")
 }
-func rtlStrictIndex(name, sub string, occur uint, exclusive bool) (int, error) {
+func rtlIndex(name, sub string, occur uint, exclusive bool) (int, error) {
 	matches := findAllIndexes(name, sub)
 	if int(occur) <= len(matches) {
 		i := matches[len(matches)-int(occur)]

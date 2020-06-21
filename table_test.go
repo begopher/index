@@ -119,7 +119,36 @@ func strictIndexTestTable() []testTable {
 	}
 }
 func looseIndexTestTable() []testTable {
-	return []testTable{}
+	return []testTable{
+		{ltr: true, exclusive: true, indexOf: ".", occur: 2, value: ".wow", expected: 4},
+		{ltr: true, exclusive: true, indexOf: ".", occur: 3, value: "www.begopher.com", expected: 16},
+		{ltr: true, exclusive: true, indexOf: "ww", occur: 3, value: "wwww.x.com", expected: 10},
+		{ltr: true, exclusive: true, indexOf: "ww", occur: 4, value: "wwww.x.com", expected: 10},
+		{ltr: true, exclusive: true, indexOf: "ww", occur: 8, value: "wwww.xww.com", expected: 12},
+		{ltr: true, exclusive: true, indexOf: "ww", occur: 100, value: "wwww.xww.cww", expected: 12},
+		{ltr: true, exclusive: true, indexOf: "k", occur: 1, value: "wwww.xww.com", expected: 12},
+
+		{ltr: true, exclusive: false, indexOf: "j", occur: 1, value: ".wow", expected: 4},
+		{ltr: true, exclusive: false, indexOf: "z", occur: 1, value: "www.begopher.com", expected: 16},
+		{ltr: true, exclusive: false, indexOf: "mm", occur: 1, value: "wwww.x.com", expected: 10},
+		{ltr: true, exclusive: false, indexOf: "oo", occur: 1, value: "wwww.x.com", expected: 10},
+		{ltr: true, exclusive: false, indexOf: "wx", occur: 1, value: "wwww.xww.com", expected: 12},
+		{ltr: true, exclusive: false, indexOf: "mo", occur: 1, value: "wwww.xww.com", expected: 12},
+
+		{ltr: false, exclusive: true, indexOf: ".", occur: 3, value: "www.begopher.com", expected: 16},
+		{ltr: false, exclusive: true, indexOf: "ww", occur: 3, value: "wwww.x.com", expected: 10},
+		{ltr: false, exclusive: true, indexOf: "ww", occur: 4, value: "wwww.x.com", expected: 10},
+		{ltr: false, exclusive: true, indexOf: "ww", occur: 8, value: "wwww.xww.com", expected: 12},
+		{ltr: false, exclusive: true, indexOf: "ww", occur: 100, value: "wwww.xww.cww", expected: 12},
+		{ltr: false, exclusive: true, indexOf: "k", occur: 1, value: "wwww.xww.com", expected: 12},
+
+		{ltr: false, exclusive: false, indexOf: "j", occur: 1, value: ".wow", expected: 4},
+		{ltr: false, exclusive: false, indexOf: "z", occur: 1, value: "www.begopher.com", expected: 16},
+		{ltr: false, exclusive: false, indexOf: "mm", occur: 1, value: "wwww.x.com", expected: 10},
+		{ltr: false, exclusive: false, indexOf: "oo", occur: 1, value: "wwww.x.com", expected: 10},
+		{ltr: false, exclusive: false, indexOf: "wx", occur: 1, value: "wwww.xww.com", expected: 12},
+		{ltr: false, exclusive: false, indexOf: "mo", occur: 1, value: "wwww.xww.com", expected: 12},
+	}
 }
 
 func indexNotFoundTestTable() []testTable {
