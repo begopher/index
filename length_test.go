@@ -7,15 +7,7 @@ import (
 )
 
 func TestLenIndex(t *testing.T) {
-	testCases := []struct {
-		value    string
-		expected int
-	}{
-		{value: "", expected: 0},
-		{value: "begopher", expected: 8},
-		{value: "begopher.tar", expected: 12},
-		{value: "begopher.tar.gz", expected: 15},
-	}
+	testCases := lengthTestTable()
 	length := index.Length()
 	for _, test := range testCases {
 

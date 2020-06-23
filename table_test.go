@@ -1,5 +1,11 @@
 package index_test
 
+const (
+	anyUniqueIndexOf = "abc1234!-#"
+	anyValidValue    = "any string"
+	anyValidOccur    = 1
+)
+
 type testTable struct {
 	ltr       bool
 	exclusive bool
@@ -118,37 +124,37 @@ func strictIndexTestTable() []testTable {
 		{ltr: false, exclusive: false, indexOf: "o", occur: 2, value: "wwwow.xww.com", expected: 4},
 	}
 }
-func lastIndexTestTable() []testTable {
+func lengthTestTable() []testTable {
 	return []testTable{
-		{value: ".wow", expected: 4},
-		{value: ".wow", expected: 4},
-		{value: "www.begopher.com", expected: 16},
-		{value: "wwww.x.com", expected: 10},
-		{value: "wwww.x.com", expected: 10},
-		{value: "wwww.xww.com", expected: 12},
-		{value: "wwww.xww.cww", expected: 12},
-		{value: "wwww.xww.com", expected: 12},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: ".wow", expected: 4},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: ".wow", expected: 4},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "www.begopher.com", expected: 16},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 10},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 10},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 12},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.cww", expected: 12},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 12},
 
-		{value: ".wow", expected: 4},
-		{value: "www.begopher.com", expected: 16},
-		{value: "wwww.x.com", expected: 10},
-		{value: "wwww.x.com", expected: 10},
-		{value: "wwww.xww.com", expected: 12},
-		{value: "wwww.xww.com", expected: 12},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: ".wow", expected: 4},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "www.begopher.com", expected: 16},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 10},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 10},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 12},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 12},
 
-		{value: "www.begopher.com", expected: 16},
-		{value: "wwww.x.com", expected: 10},
-		{value: "wwww.x.com", expected: 10},
-		{value: "wwww.xww.com", expected: 12},
-		{value: "wwww.xww.cww", expected: 12},
-		{value: "wwww.xww.com", expected: 12},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "www.begopher.com", expected: 16},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 10},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 10},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 12},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.cww", expected: 12},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 12},
 
-		{value: ".wow", expected: 4},
-		{value: "www.begopher.com", expected: 16},
-		{value: "wwww.x.com", expected: 10},
-		{value: "wwww.x.com", expected: 10},
-		{value: "wwww.xww.com", expected: 12},
-		{value: "wwww.xww.com", expected: 12},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: ".wow", expected: 4},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "www.begopher.com", expected: 16},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 10},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 10},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 12},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 12},
 	}
 }
 
