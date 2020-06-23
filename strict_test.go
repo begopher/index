@@ -17,7 +17,7 @@ func TestStrictCreatation(t *testing.T) {
 func TestStrictCreatation_errors(t *testing.T) {
 	testCases := indexCreationErrorTestTable()
 	for _, test := range testCases {
-		_, err := index.Strict(test.indexOf, test.occur, test.exclusive, test.ltr)
+		index, err := index.Strict(test.indexOf, test.occur, test.exclusive, test.ltr)
 		if err == nil {
 			t.Error("invalid indexOf value for Strict index should return error")
 		} else {
@@ -26,6 +26,13 @@ func TestStrictCreatation_errors(t *testing.T) {
 			if expected != got {
 				t.Errorf("Expected error message [%v], got [%v]", expected, got)
 			}
+		}
+		i, err := index.Get(anyValue)
+		if err == nil {
+			t.Errorf("Using get in illegalIndex must return error")
+		}
+		if i != -1 {
+			t.Error("Using illegalIndex must return -1")
 		}
 	}
 }

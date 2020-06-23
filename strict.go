@@ -21,10 +21,12 @@ func (index strictImmutableIndex) Get(value string) (int, error) {
 }
 func Strict(indexOf string, occur uint, exclusive bool, ltr bool) (Index, error) {
 	if indexOf == "" {
-		return illegalIndex{}, fmt.Errorf("indexOf cannot be empty")
+		errMsg := "indexOf cannot be empty"
+		return illegalIndex{}, fmt.Errorf(errMsg)
 	}
 	if occur < 1 {
-		return illegalIndex{}, fmt.Errorf("occur value must be bigger than zero")
+		errMsg := "occur value must be bigger than zero"
+		return illegalIndex{}, fmt.Errorf(errMsg)
 	}
 	return strictImmutableIndex{
 		indexOf:   indexOf,
