@@ -1,10 +1,9 @@
 package index
 
-import "log"
+import "fmt"
 
 type illegalIndex struct{}
 
 func (i illegalIndex) Get(value string) (int, error) {
-	log.Fatal("illegal index cannot be used")
-	return 0, nil
+	return -1, fmt.Errorf("illegal ")
 }
