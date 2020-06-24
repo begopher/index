@@ -1,9 +1,10 @@
 package index_test
 
 const (
-	anyUniqueIndexOf = "abc1234!-#"
+	anyValue         = ""
 	anyValidValue    = "any string"
 	anyValidOccur    = 1
+	anyUniqueIndexOf = "abc1234!-#"
 )
 
 type testTable struct {
