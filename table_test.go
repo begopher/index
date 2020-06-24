@@ -158,6 +158,39 @@ func lengthTestTable() []testTable {
 	}
 }
 
+func zeroTestTable() []testTable {
+	return []testTable{
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: ".wow", expected: 0},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: ".wow", expected: 0},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "www.begopher.com", expected: 0},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 0},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 0},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 0},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.cww", expected: 0},
+		{ltr: true, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 0},
+
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: ".wow", expected: 0},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "www.begopher.com", expected: 0},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 0},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 0},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 0},
+		{ltr: true, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 0},
+
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "www.begopher.com", expected: 0},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 0},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 0},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 0},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.cww", expected: 0},
+		{ltr: false, exclusive: true, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 0},
+
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: ".wow", expected: 0},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "www.begopher.com", expected: 0},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 0},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.x.com", expected: 0},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 0},
+		{ltr: false, exclusive: false, indexOf: anyUniqueIndexOf, occur: anyValidOccur, value: "wwww.xww.com", expected: 0},
+	}
+}
 func indexNotFoundTestTable() []testTable {
 	errMsg := "No match found"
 	return []testTable{

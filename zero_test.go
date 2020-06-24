@@ -6,15 +6,7 @@ import (
 )
 
 func TestZeroIndex(t *testing.T) {
-	testCases := []struct {
-		value    string
-		expected int
-	}{
-		{value: "", expected: 0},
-		{value: "begopher", expected: 0},
-		{value: "begopher.tar", expected: 0},
-		{value: "begopher.tar.gz", expected: 0},
-	}
+	testCases := zeroTestTable()
 	indexZero := index.Zero()
 	for _, test := range testCases {
 
