@@ -13,7 +13,7 @@ func TestGetInZeroStrategy(t *testing.T) {
 		expected := test.expected
 		got, err := indexZero.Get(test.value)
 		if err != nil {
-			t.Error("Last Index shout never return error")
+			t.Error("Last Index should never return error")
 		}
 
 		if got != expected {

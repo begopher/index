@@ -41,7 +41,7 @@ func TestGetInStrictStrategy(t *testing.T) {
 	for _, test := range testCases {
 		index, err := index.Strict(test.indexOf, test.occur, test.exclusive, test.ltr)
 		if err != nil {
-			t.Errorf("Valid value of StrictIndex shout not return error")
+			t.Errorf("Valid value of StrictIndex should not return error")
 		}
 		got, err := index.Get(test.value)
 		expected := test.expected
