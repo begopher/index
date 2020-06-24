@@ -6,7 +6,7 @@ import (
 	"github.com/begopher/index"
 )
 
-func TestLenIndex(t *testing.T) {
+func TestGetInLengthStrategy(t *testing.T) {
 	testCases := lengthTestTable()
 	length := index.Length()
 	for _, test := range testCases {

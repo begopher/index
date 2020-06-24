@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestZeroIndex(t *testing.T) {
+func TestGetInZeroStrategy(t *testing.T) {
 	testCases := zeroTestTable()
 	indexZero := index.Zero()
 	for _, test := range testCases {
