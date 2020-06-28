@@ -22,7 +22,7 @@ func (z length) Get(value string) (int, error) {
 	return int(len(value)), nil
 }
 
-// Length always will return string's length
+// Length always returns string's length
 func Length() Index {
 	return length{}
 }

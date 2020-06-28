@@ -23,7 +23,7 @@ import (
 
 // Index is the interface implemented by an onject that can extract index from a given string
 //
-// Get extract the correct index from the given value
+// Get extracts the correct index number from a given value
 type Index interface {
 	Get(value string) (int, error)
 }

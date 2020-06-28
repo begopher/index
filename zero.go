@@ -18,7 +18,7 @@ package index
 
 type zero struct{}
 
-// Zero always will return 0
+// Zero always returns 0
 func Zero() Index {
 	return zero{}
 }

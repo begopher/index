@@ -36,9 +36,9 @@ func (index strictImmutableIndex) Get(value string) (int, error) {
 	}
 }
 
-// Strict is responsible for extracting the correct index based on a given configuration.
+// Strict is responsible for extracting the correct index number based on a given configuration.
 //
-// indexOf is the substring that the algorightem is searching for.
+// indexOf is the substring that searching algorightem is searching for.
 // occur allows the searching algorithem to skip occur-1 match.
 // exclusive determines which index will be returned:
 // 	if ture  it will return the index of the first rune of the match
