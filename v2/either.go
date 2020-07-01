@@ -1,0 +1,37 @@
+// Index extracts index number from a given string based on a preconfiguration.
+// Copyright (C) 2020  Abdulrahman A Alsaedi
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+package index
+
+type immutableEitherStrategy struct {
+	first Index
+	last  Index
+}
+
+// Either invokes first to extract the correct index, otherwise the result of invoking last will be returned.
+func Either(first, last Index) Index {
+	return immutableEitherStrategy{
+		first: first,
+		last:  last,
+	}
+}
+func (index immutableEitherStrategy) Get(value string) int {
+	i := index.first.Get(value)
+	if i < 0 {
+		i = index.last.Get(value)
+	}
+	return i
+}
