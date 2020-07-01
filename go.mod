@@ -14,6 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-module github.com/begopher/index/v2
+module github.com/begopher/index
 
 go 1.14

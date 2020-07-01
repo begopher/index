@@ -25,9 +25,9 @@ type strictImmutableIndex struct {
 	exclusive bool
 }
 
-func (index strictImmutableIndex) Get(value string) int {
+func (index strictImmutableIndex) Get(value string) (int, error) {
 	if value == "" {
-		return -1
+		return -1, fmt.Errorf("Value cannot be empty")
 	}
 	if index.ltr {
 		return ltrIndex(value, index.indexOf, index.occur, index.exclusive)

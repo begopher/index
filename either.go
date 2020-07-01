@@ -28,10 +28,10 @@ func Either(first, last Index) Index {
 		last:  last,
 	}
 }
-func (index immutableEitherStrategy) Get(value string) int {
-	i := index.first.Get(value)
-	if i < 0 {
-		i = index.last.Get(value)
+func (index immutableEitherStrategy) Get(value string) (int, error) {
+	i, err := index.first.Get(value)
+	if err != nil {
+		i, err = index.last.Get(value)
 	}
-	return i
+	return i, err
 }
