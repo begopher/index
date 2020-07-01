@@ -18,8 +18,8 @@ package index
 
 type length struct{}
 
-func (z length) Get(value string) (int, error) {
-	return int(len(value)), nil
+func (z length) Get(value string) int {
+	return int(len(value))
 }
 
 // Length always returns string's length

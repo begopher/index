@@ -19,7 +19,7 @@ package index_test
 import (
 	"testing"
 
-	"github.com/begopher/index"
+	"github.com/begopher/index/v2"
 )
 
 func TestGetInLengthStrategy(t *testing.T) {
@@ -28,9 +28,9 @@ func TestGetInLengthStrategy(t *testing.T) {
 	for _, test := range testCases {
 
 		expected := test.expected
-		got, err := length.Get(test.value)
-		if err != nil {
-			t.Error("Last Index should never return error")
+		got := length.Get(test.value)
+		if got < 0 {
+			t.Error("Length Index should never return value less than 0")
 		}
 		if got != expected {
 			t.Errorf("Expected index is [%d], got [%d]", expected, got)

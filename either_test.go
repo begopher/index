@@ -19,7 +19,7 @@ package index_test
 import (
 	"testing"
 
-	"github.com/begopher/index"
+	"github.com/begopher/index/v2"
 )
 
 func TestGetInEitherStrategyWithStrictAndLength(t *testing.T) {
@@ -32,7 +32,7 @@ func TestGetInEitherStrategyWithStrictAndLength(t *testing.T) {
 		}
 		length := index.Length()
 		either := index.Either(strict, length)
-		got, _ := either.Get(test.value)
+		got := either.Get(test.value)
 		expected := test.expected
 		if got != expected {
 			t.Errorf("Expected value [%v], got [%v]", expected, got)
@@ -49,7 +49,7 @@ func TestGetInEitherStrategyWithStrictAndZero(t *testing.T) {
 		}
 		zero := index.Zero()
 		either := index.Either(strict, zero)
-		got, _ := either.Get(test.value)
+		got := either.Get(test.value)
 		expected := test.expected
 		if got != expected {
 			t.Errorf("Expected value [%v], got [%v]", expected, got)

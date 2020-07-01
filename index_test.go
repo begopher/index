@@ -19,7 +19,7 @@ package index_test
 import (
 	"fmt"
 
-	"github.com/begopher/index"
+	"github.com/begopher/index/v2"
 )
 
 func Example_toFileExtension() {
@@ -28,8 +28,8 @@ func Example_toFileExtension() {
 	lastIndex := index.Either(dot, index.Length())
 
 	fileName := "name.tar.gz"
-	fi, _ := firstIndex.Get(fileName)
-	li, _ := lastIndex.Get(fileName)
+	fi := firstIndex.Get(fileName)
+	li := lastIndex.Get(fileName)
 	fmt.Println(fileName[fi:li])
 	// Output:
 	// name
@@ -41,31 +41,37 @@ func Example_ifExtensionNotExistThenFileLength() {
 	lastIndex := index.Either(dot, index.Length())
 
 	fileName := "nametargz"
-	fi, _ := firstIndex.Get(fileName)
-	li, _ := lastIndex.Get(fileName)
-	fmt.Println(fileName[fi:li])
-	// Output:
-	// nametargz
+	fi := firstIndex.Get(fileName)
+	li := lastIndex.Get(fileName)
+	if fi > -1 && li > -1 {
+		fmt.Println(fileName[fi:li])
+		// Output:
+		// nametargz
+	}
 }
 func Example_findSecondGopherLTR() {
 	firstIndex, _ := index.Strict("gopher", 2, true, true)
 	lastIndex, _ := index.Strict("gopher", 2, false, true)
 
 	gophers := "gopher gopher gopher gopher"
-	fi, _ := firstIndex.Get(gophers)
-	li, _ := lastIndex.Get(gophers)
-	fmt.Println(gophers[fi:li], fi, li)
-	// Output:
-	// gopher 7 13
+	fi := firstIndex.Get(gophers)
+	li := lastIndex.Get(gophers)
+	if fi > -1 && li > -1 {
+		fmt.Println(gophers[fi:li], fi, li)
+		// Output:
+		// gopher 7 13
+	}
 }
 func Example_findSecondGopherRTL() {
 	firstIndex, _ := index.Strict("gopher", 2, true, false)
 	lastIndex, _ := index.Strict("gopher", 2, false, false)
 
 	gophers := "gopher gopher gopher gopher"
-	fi, _ := firstIndex.Get(gophers)
-	li, _ := lastIndex.Get(gophers)
-	fmt.Println(gophers[fi:li], fi, li)
-	// Output:
-	// gopher 14 20
+	fi := firstIndex.Get(gophers)
+	li := lastIndex.Get(gophers)
+	if fi > -1 && li > -1 {
+		fmt.Println(gophers[fi:li], fi, li)
+		// Output:
+		// gopher 14 20
+	}
 }

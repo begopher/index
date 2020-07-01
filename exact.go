@@ -16,17 +16,15 @@
 
 package index
 
-import "fmt"
-
 type immutableExactStrategy struct {
 	number uint
 }
 
-func (index immutableExactStrategy) Get(value string) (int, error) {
+func (index immutableExactStrategy) Get(value string) int {
 	if value == "" {
-		return -1, fmt.Errorf("Value cannot be empty")
+		return -1
 	}
-	return int(index.number), nil
+	return int(index.number)
 }
 
 // Exact is used when index number has known ahead

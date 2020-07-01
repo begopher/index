@@ -17,15 +17,11 @@
 // Package index extracts inclusive or exclusive index from a given string based on a preconfiguration.
 package index
 
-import (
-	"fmt"
-)
-
 // Index is the interface implemented by an onject that can extract index from a given string
 //
 // Get extracts the correct index number from a given value
 type Index interface {
-	Get(value string) (int, error)
+	Get(value string) int
 }
 
 func findAllIndexes(value, sub string) []int {
@@ -55,27 +51,27 @@ func findAllIndexes(value, sub string) []int {
 	}
 	return indexes
 }
-func ltrIndex(name, sub string, occur uint, exclusive bool) (int, error) {
+func ltrIndex(name, sub string, occur uint, exclusive bool) int {
 	matches := findAllIndexes(name, sub)
 	if int(occur) <= len(matches) {
 		i := matches[occur-1]
 		if !exclusive {
 			i += len([]rune(sub))
 		}
-		return i, nil
+		return i
 
 	}
-	return -1, fmt.Errorf("No match found")
+	return -1
 }
-func rtlIndex(name, sub string, occur uint, exclusive bool) (int, error) {
+func rtlIndex(name, sub string, occur uint, exclusive bool) int {
 	matches := findAllIndexes(name, sub)
 	if int(occur) <= len(matches) {
 		i := matches[len(matches)-int(occur)]
 		if !exclusive {
 			i += len([]rune(sub))
 		}
-		return i, nil
+		return i
 
 	}
-	return -1, fmt.Errorf("No match found")
+	return -1
 }

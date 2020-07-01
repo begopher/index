@@ -19,7 +19,7 @@ package index_test
 import (
 	"testing"
 
-	"github.com/begopher/index"
+	"github.com/begopher/index/v2"
 )
 
 func TestExactCreatation(t *testing.T) {
@@ -59,9 +59,9 @@ func TestGetInExactStrategy(t *testing.T) {
 	}
 	for _, test := range testCases {
 		index := index.Exact(test.number)
-		got, err := index.Get(test.value)
-		if err != nil {
-			t.Errorf("Valid value should not return error")
+		got := index.Get(test.value)
+		if got < 0 {
+			t.Errorf("Valid value should not return value less than 0")
 		}
 		expected := test.expected
 		if expected != got {
@@ -86,9 +86,9 @@ func TestGetInExactStrategy_Error(t *testing.T) {
 	}
 	for _, test := range testCases {
 		index := index.Exact(test.number)
-		got, err := index.Get(test.value)
-		if err == nil {
-			t.Errorf("invalid value should return error")
+		got := index.Get(test.value)
+		if got != -1 {
+			t.Errorf("invalid value should return -1")
 		}
 		expected := test.expected
 		if got != expected {
