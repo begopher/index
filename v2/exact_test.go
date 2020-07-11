@@ -56,6 +56,12 @@ func TestGetInExactStrategy(t *testing.T) {
 		{number: 4, expected: 4, value: "begopher"},
 		{number: 5, expected: 5, value: "begopher.com"},
 		{number: 6, expected: 6, value: "Abdulrahman A Alsaedi"},
+		// exact
+		{number: 0, expected: 0, value: ""},
+		{number: 1, expected: 1, value: "a"},
+		{number: 2, expected: 2, value: "ab"},
+		{number: 3, expected: 3, value: "abc"},
+		{number: 4, expected: 4, value: "abcd"},
 	}
 	for _, test := range testCases {
 		index := index.Exact(test.number)
@@ -76,13 +82,16 @@ func TestGetInExactStrategy_Error(t *testing.T) {
 		value    string
 		expected int
 	}{
-		{number: 0, expected: -1, value: ""},
 		{number: 1, expected: -1, value: ""},
 		{number: 2, expected: -1, value: ""},
 		{number: 3, expected: -1, value: ""},
 		{number: 4, expected: -1, value: ""},
 		{number: 5, expected: -1, value: ""},
 		{number: 6, expected: -1, value: ""},
+		{number: 2, expected: -1, value: "a"},
+		{number: 3, expected: -1, value: "ab"},
+		{number: 4, expected: -1, value: "abc"},
+		{number: 5, expected: -1, value: "abcd"},
 	}
 	for _, test := range testCases {
 		index := index.Exact(test.number)

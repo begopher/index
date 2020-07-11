@@ -21,13 +21,17 @@ type immutableExactStrategy struct {
 }
 
 func (index immutableExactStrategy) Get(value string) int {
-	if value == "" {
+	runes := []rune(value)
+	if int(index.number) > len(runes) {
 		return -1
 	}
 	return int(index.number)
 }
 
 // Exact is used when index number has known ahead
+//
+// number will be returned if value's length is bigger or equals to number
+// else -1 will be returned
 func Exact(number uint) Index {
 	return immutableExactStrategy{number: number}
 }
